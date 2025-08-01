@@ -73,14 +73,26 @@ export default function NavbarGlobal({ isLoggedIn, setIsLoggedIn, userRole, setU
         </div>
 
         {/* Botón login/logout a la derecha extrema (oculto en móvil) */}
-        <div className="hidden md:flex flex-shrink-0">
-          {isLoggedIn && <AccountConfigButton className="hidden md:flex"/>}
+        <div className="hidden md:flex flex-shrink-0 items-center space-x-12">
+          {isLoggedIn && <AccountConfigButton className="hidden md:flex" />}
+
+          <a
+            href="/privacy"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-2xl text-white hover:underline"
+          >
+            Política de privacidad
+          </a>
+
+
           <LoginLogoutButton
             isLoggedIn={isLoggedIn}
             handleLogout={handleLogout}
             handleLoginRedirect={handleLoginRedirect}
           />
         </div>
+
 
         {/* Menú hamburguesa desplegado en móvil */}
         {menuOpen && (
@@ -112,6 +124,15 @@ export default function NavbarGlobal({ isLoggedIn, setIsLoggedIn, userRole, setU
             )}
             {!isLoggedIn && (
                   <div className="flex gap-6 pl-16">
+                    <a
+                      href="/privacy"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-2xl text-white hover:underline"
+                    >
+                      Política de privacidad
+                    </a>
+
                     <LoginLogoutButton
                       isLoggedIn={isLoggedIn}
                       handleLogout={() => { handleLogout(); setMenuOpen(false); }}
